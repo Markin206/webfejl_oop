@@ -59,7 +59,7 @@ play(){
 gettierlevel(){
     if(this.playedMatch <= 3)
         return "A";
-    else if(this.playedMatch > 3 || this.playedMatch < 8)
+    else if(this.playedMatch > 3 && this.playedMatch < 8)
         return "B";
     else
         return "C";
