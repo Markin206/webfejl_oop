@@ -45,6 +45,7 @@ class Player{
 
 play(){
     this.playedMatch++;
+    //--------------------------------------------------------------------------------------- SAJÁT /// NEM ÓRAI ///
     this.endofmatch = "LOST";
     const result = Math.floor(Math.random()* 2 - 0)
     if(result == 1){
@@ -54,6 +55,7 @@ play(){
     else{
         console.log(this.nickname, this.playedMatch, this.endofmatch, gomszab.gettierlevel())
     }
+    //--------------------------------------------------------------------------------------- SAJÁT /// NEM ÓRAI ///
 }
 
 gettierlevel(){
@@ -65,7 +67,12 @@ gettierlevel(){
         return "C";
 }
 }
+
+function printtierlevel(Player) {//meghívjuk az osztályt
+    console.log(`${Player.nickname} jelenlegi tiere: ${Player.gettierlevel()}`); //az osztályon belüli tulajdonságot és függvényt meghívjuk
+}
 const gomszab = new Player("mark");
 console.log(gomszab);
 gomszab.play();
 gomszab.gettierlevel();
+printtierlevel(gomszab); //10.feladat meghívása
