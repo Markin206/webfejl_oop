@@ -8,8 +8,11 @@ function createRow(companion){
     const tbody = table.querySelector('tbody');
     const tableRow = document.createElement('tr');
     tbody.appendChild(tableRow);
-    tableRow.id = companion.id;
-    createCell(tableRow);
+    tableRow.id = companion.id;//megadjuk a tableRow ID-jét
+    const teljesnev = createCell(tableRow); //létrehozunk egy cellát és adunk neki egy variable
+    teljesnev.innerHTML = companion.getname();//a teljesnev innerHTML-hez adjuk meg az össze tett nevet a getname függvény meghívás által;
+    const reszleg = createCell(tableRow);
+    reszleg.innerHTML = companion.reszleg;// reszleg innerhtml-hez a Factory osztály tulajdonságát adjuk
 
    // TODO 7
 

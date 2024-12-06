@@ -6,6 +6,7 @@ class Factory{
 
     addmano(Companion){//csak azért kell egy paraméter mert a manolista már az osztályon belül van
         this.manolist.push(Companion);
+        createRow(Companion);
     }
    }
    
