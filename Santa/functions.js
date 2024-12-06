@@ -8,6 +8,8 @@ function createRow(companion){
     const tbody = table.querySelector('tbody');
     const tableRow = document.createElement('tr');
     tbody.appendChild(tableRow);
+    tableRow.id = companion.id;
+    createCell(tableRow);
 
    // TODO 7
 

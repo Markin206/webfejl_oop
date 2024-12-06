@@ -47,12 +47,15 @@ function initTable(){
     for(let i = 0;i < companionList.length; i++){
     const currentElement = companionList[i]; //a lista aktuális objektumát rakjuk egy változóba
     const companion = new Companion(i, currentElement.firstName, currentElement.lastName, currentElement.area); //a classban megadott paraméterek alapján adjuk meg a paramétereket
-    
+    factory.addmano(companion);//hozzá adjuk a manolistához
+    for(const pr of currentElement.products){//a companion listán végig járjuk a products tulajdonságot
+        companion.addproduct(pr);//és hozzá adjuk a companion.addproduct által
+    }
     }
     // TODO 6
 }
 
-
+console.log(factory)
 initTable()
 
 /**
