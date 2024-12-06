@@ -44,8 +44,12 @@ document.getElementById('product').addEventListener('submit',function(e){
 * table render
 */
 function initTable(){
-
-   // TODO 6
+    for(let i = 0;i < companionList.length; i++){
+    const currentElement = companionList[i]; //a lista aktuális objektumát rakjuk egy változóba
+    const companion = new Companion(i, currentElement.firstName, currentElement.lastName, currentElement.area); //a classban megadott paraméterek alapján adjuk meg a paramétereket
+    
+    }
+    // TODO 6
 }
 
 
