@@ -36,6 +36,11 @@ class Person{
     render(parentelement){//HTMLelement lesz a parent element
         const tablerow = document.createElement('tr') //sor létrehozása
         parentelement.appendChild(tablerow)//sor hozzáadása a HTMLelementhez
+        //appendchildnál fontos a sorrend. Ahogy írtuk le a programot úgy megy egymás után az appendchild.
+
+        const celllastname = document.createElement('td')
+        celllastname.innerHTML = this.lastname
+        tablerow.appendChild(celllastname)
 
         const cellfirstname1 = document.createElement('td')//cellák létrehozása
         cellfirstname1.innerHTML = this.firstname1//cellák tartalma kiegészítjük a Person osztály "firstname1" tulajdonságával
@@ -51,10 +56,6 @@ class Person{
         else{//ha meg nem undefined akkor hozzá adja a sorhoz a cellát
             tablerow.appendChild(cellfirstname2)
         }
-
-        const celllastname = document.createElement('td')
-        celllastname.innerHTML = this.lastname
-        tablerow.appendChild(celllastname)
         //------------------------------------------------------------------------------
     }
 }
@@ -66,3 +67,4 @@ function init(){
         person.render(tbody)//meghívjuk a konstruktorral a függvényt
     }
 }
+init()
