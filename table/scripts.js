@@ -60,7 +60,9 @@ class Person{
 }
 
 function init(){
-    for(const i of array){
-
+    const tbody = document.getElementById('tbodyId')
+    for(const szemely of array){//végig iterálunk a tömbön és az objektumot példányosítunk szemely néven
+        const person = new Person(szemely)// létrehozzuk a konstruktort amelynek paramétere a példányosított objektum
+        person.render(tbody)//meghívjuk a konstruktorral a függvényt
     }
 }
