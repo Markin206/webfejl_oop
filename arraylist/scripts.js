@@ -16,6 +16,10 @@ class ArrayList{
         this.#objektum[index] = item;//beállítjuk a belső státuszunk index tulajdonságnak a bemeneti paramétert
         this.#lenght++;//a hossz tulajdonság értékét inkrementáljuk/növeljük
     }
+    Clear(){
+        //hossz lenullázása
+        //objektum kiüritése
+    }
 }
 const csirke = {}
     csirke.a = 'def';
