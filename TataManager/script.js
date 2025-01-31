@@ -15,11 +15,11 @@ class DataManager {
     #updateCallBack
     /**
      * 
-     * @param {Person[]} paramArray 
+     * @param {Person[]} personarray 
      */
-    constructor(paramArray = []){
-        array = paramArray;
-        () => {}
+    constructor(personarray = []){
+        this.#array = personarray;
+        this.#updateCallBack = () => {}
     }
 
 
@@ -28,6 +28,7 @@ class DataManager {
     */
     setUpdateCallback(callback){
         this.#updateCallBack = callback;
+        this.#updateCallBack(this.#array)
     }
 
     /**
@@ -52,6 +53,7 @@ class DataManager {
             }
         }
         this.#updateCallBack(result)
+        
     }
 
     /**
@@ -87,7 +89,7 @@ class DataTable {
         table.appendChild(tbody);
 
         dataManager.setUpdateCallback((persons) =>{
-            tbody = "";
+            tbody.innerHTML = "";
             for(const forPerson of persons){
                 const tr = document.createElement('tr');
                 const tdNev = document.createElement('td');
@@ -102,3 +104,10 @@ class DataTable {
         })
     }
 }
+
+const dataM = new DataManager([{eletkor: 17, nev: "feri"}])
+const dataT = new DataTable(dataM)
+
+const field = document.createElement('field')
+const input1 = document.createElement('input')
+const input2 = document.createElement('input')
