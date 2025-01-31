@@ -1,0 +1,3 @@
+class DataManager {}
+
+class DataTable {}
