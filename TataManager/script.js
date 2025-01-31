@@ -41,7 +41,8 @@ class DataManager {
     /**
      * @param {string} nev 
      */
-    filterName(name){
+    filterName(name)
+    {
         const result = [];
         for(const elem of this.Person)
         {
@@ -50,7 +51,6 @@ class DataManager {
             result.push(elem)
             }
         }
-        
         this.#updateCallBack(result)
     }
 
@@ -67,6 +67,38 @@ class DataManager {
             result.push(elem)
             }
         }
+        this.#updateCallBack(result)
     }
 }
-class DataTable {}
+
+
+
+class DataTable {
+    /**
+     * 
+     * @param {DataManager} dataManager 
+     */
+    constructor(dataManager){
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        document.body.appendChild(table);
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        dataManager.setUpdateCallback((persons) =>{
+            tbody = "";
+            for(const forPerson of persons){
+                const tr = document.createElement('tr');
+                const tdNev = document.createElement('td');
+                const tdKor = document.createElement('td');
+                tdNev.innerHTML = forPerson.nev
+                tdKor.innerHTML = forPerson.eletkor
+
+                tbody.appendChild(tr);
+                tr.appendChild(tdNev);
+                tr.appendChild(tdKor);
+            }
+        })
+    }
+}
