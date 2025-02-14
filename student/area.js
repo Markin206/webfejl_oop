@@ -49,11 +49,17 @@ class Area{
 class DetailsArea extends Area{
 
     /**
-     * 
+     * @param {Manager} manager
      * @param {string} className a css osztály 
      */
-    constructor(className){
+    constructor(className, manager){
         super(className)//meghívjuk az ősosztály konstruktorát
+        manager.setSelectCallBack((student) => {
+            this.div.innerHTML = '';
+            const detailsContainer = document.createElement('div')
+            detailsContainer.innerHTML = student.comment;
+            this.div.appendChild(detailsContainer)
+        })
     }
 }
 
@@ -74,23 +80,24 @@ class StudentArea extends Area{
            const NameSpan = document.createElement('span');
            NameSpan.textContent = student.name;
            NameSpan.style.color = student.bad ? 'red' : 'black';
-           studentCard.appendChild(NameSpan)
+           studentCard.appendChild(NameSpan);
            studentCard.appendChild(document.createElement('br'));
 
            const averageSpan = document.createElement('span');
            averageSpan.textContent = student.average;
-           studentCard.appendChild(averageSpan)
+           studentCard.appendChild(averageSpan);
            studentCard.appendChild(document.createElement('br'));
-           this.div.appendChild(studentCard)
+           this.div.appendChild(studentCard);
            studentCard.addEventListener('click', (e) =>{
-            const cardList = document.querySelectorAll('.student-card')
+            const cardList = document.querySelectorAll('.student-card');
             for(const card of cardList){//végigiterálunk a student cardokon
-                card.className = "student-card"
+                card.className = "student-card";
                 //mivel a selectednél a student card mellet 
                 //lesz egy selected css class, ezért ha az összesnek megadjuk
                 //az eredeti class selectedes törlödik
             }
-            e.currentTarget.classList.add('selected')
+            e.currentTarget.classList.add('selected');
+            manager.select(student);
            })
         })
     }

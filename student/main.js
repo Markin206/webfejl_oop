@@ -1,6 +1,6 @@
 
 const manager = new Manager();
-const detailsArea =  new DetailsArea('details');
+const detailsArea =  new DetailsArea('details', manager);
 const studentArea = new StudentArea('student-list', manager);
 
 const array = [
