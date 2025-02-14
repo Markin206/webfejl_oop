@@ -1,5 +1,7 @@
+
+const manager = new Manager();
 const detailsArea =  new DetailsArea('details');
-const studentArea = new StudentArea('student-list');
+const studentArea = new StudentArea('student-list', manager);
 
 const array = [
     {
@@ -55,6 +57,7 @@ const array = [
     }
 ];
 
-for(const elem in array){//végig iterálunk az arrayen és minden objektum alapján példányosítunk
+for(const elem of array){//végig iterálunk az arrayen és minden objektum alapján példányosítunk
     const student = new Student(elem.name, elem.average, elem.comment, elem.bad)
+    manager.add(student)
 }

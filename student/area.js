@@ -21,6 +21,7 @@ class Area{
         this.#div.className = className;
         container.appendChild(this.#div)
     }
+
     /**
      * A container classal rendelkező elembe tesszülk bele az alkalmazás egyes reszeit
      * Elso sorbab negbézzük létezik-e a container osztállyal rendelkező div
@@ -62,10 +63,35 @@ class DetailsArea extends Area{
  */
 class StudentArea extends Area{
     /**
-     * 
+     * @param {Manager} manager manager példány
      * @param {string} className a css osztály 
-     */
-    constructor(className){
-        super(className)//meghívjuk az ősosztály konstruktorát
+    */
+   constructor(className, manager){
+       super(className)//meghívjuk az ősosztály konstruktorát
+       manager.setAddCallBack((student) =>{
+           const studentCard = document.createElement('div');
+           studentCard.className = 'student-card';
+           const NameSpan = document.createElement('span');
+           NameSpan.textContent = student.name;
+           NameSpan.style.color = student.bad ? 'red' : 'black';
+           studentCard.appendChild(NameSpan)
+           studentCard.appendChild(document.createElement('br'));
+
+           const averageSpan = document.createElement('span');
+           averageSpan.textContent = student.average;
+           studentCard.appendChild(averageSpan)
+           studentCard.appendChild(document.createElement('br'));
+           this.div.appendChild(studentCard)
+           studentCard.addEventListener('click', (e) =>{
+            const cardList = document.querySelectorAll('.student-card')
+            for(const card of cardList){//végigiterálunk a student cardokon
+                card.className = "student-card"
+                //mivel a selectednél a student card mellet 
+                //lesz egy selected css class, ezért ha az összesnek megadjuk
+                //az eredeti class selectedes törlödik
+            }
+            e.currentTarget.classList.add('selected')
+           })
+        })
     }
 }
