@@ -42,21 +42,25 @@ class AnswersArea extends Area{
     constructor(cssClass, manager){
         super(cssClass, manager)
 
-        this.manager.setNextAnswersCallback(this.#nextAnswerCallBack(manager))
+        this.manager.setNextAnswersCallback(this.#nextAnswerCallBack())
     }
 
-    #nextAnswerCallBack(manager){
+    #nextAnswerCallBack(){
         return (answers) => {
             this.div.innerHTML = '';
             for(const answer of answers){
                 const answerCard = document.createElement('div');
                 answerCard.className = 'item';
                 answerCard.textContent = answer;
-                answerCard.addEventListener('click', () => {
-                    manager.nextQuestion(answer);
-                })
+                answerCard.addEventListener('click',this.#clickOnAnswerCard(answer))
                 this.div.appendChild(answerCard);
             }
+        }
+    }
+
+    #clickOnAnswerCard(answer){
+        return() => {
+            this.manager.nextQuestion(answer)
         }
     }
 }
@@ -64,11 +68,14 @@ class AnswersArea extends Area{
 class QuestionArea extends Area{
     constructor(cssClass, manager){
         super(cssClass, manager)
-        manager.setNextQuestionCallback((questionText) => {
+        this.manager.setNextQuestionCallback(this.#nextQuestionCallBack())
+    }
+    #nextQuestionCallBack(){
+        return (questionText) => {
             this.div.innerHTML = '';
             const questionCard = document.createElement('div');
             questionCard.textContent = questionText;
             this.div.appendChild(questionCard);
-        })
+        }
     }
 }

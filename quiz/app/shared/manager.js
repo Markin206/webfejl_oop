@@ -46,6 +46,10 @@ class Manager{
         }
     }
 
+    add(question){
+        this.#array.push(question)
+    }
+
     start(){
         this.#nextQuestionCallback(this.#array[this.#currentQuestionNumber].questionText);
         this.#nextAnswersCallback(this.#array[this.#currentQuestionNumber].answers);
