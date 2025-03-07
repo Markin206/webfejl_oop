@@ -1,0 +1,37 @@
+<diagram program="umletino" version="15.1"><zoom_level>5</zoom_level><element><id>UMLClass</id><coordinates><x>109</x><y>165</y><w>210</w><h>55</h></coordinates><panel_attributes>Card
+--
+&lt;&lt;get&gt;&gt; - text: String
+&lt;&lt;get&gt;&gt; - correct: boolean
+--
++ constructor(text: String, correct: boolean)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>449</x><y>300</y><w>180</w><h>110</h></coordinates><panel_attributes>Manager
+--
+- currentCardNumber: number
+- solution: Object
+- nextCardCallback: NextCardCallback
+- appendCardToSolution: AppendCardToSolutionCallback
+- finishCallback: FinishCallback
+--
++ constructor(Card[])
++ setNextCardCallback(cb: NextCardCallback) : void
++ setAppendCardToSolution(cb:  AppendCardToSolutionCallback): void
++ setFinishCallback(cb: FinishCallback): void
++ nextCard(answer: string): void
++ start(): void
++ add(card: Card): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>314</x><y>190</y><w>145</w><h>185</h></coordinates><panel_attributes>lt=&lt;-&gt;&gt;&gt;&gt;&gt;
+array
+m1= *</panel_attributes><additional_attributes>10;10;130;10;130;350;270;350</additional_attributes></element><element><id>UMLClass</id><coordinates><x>459</x><y>450</y><w>185</w><h>55</h></coordinates><panel_attributes>Area
+--
+&lt;&lt;get&gt;&gt; - div: HtmlDivElement
+--
++ constructor(cssClass: string, manager: Manager)
+- getContainer(): HtmlDivElement
+- finishCallback(divContainer: HtmlDivElement): FinishCallback
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>269</x><y>520</y><w>155</w><h>55</h></coordinates><panel_attributes>DeckArea
+--
++ constructor(className: sring, manager: Manager)
+- nextCardCallback(): NextCardCallback
+- clickOnCardOrSkip(): EventListenerCallback</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>669</x><y>515</y><w>150</w><h>45</h></coordinates><panel_attributes>SolutionArea
+--
++ constructor(className: sring, manager: Manager)
+- appendCardToSolution(): AppendCardToSolutionCallback</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>344</x><y>405</y><w>150</w><h>125</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>280;10;280;30;10;30;10;230</additional_attributes></element><element><id>Relation</id><coordinates><x>594</x><y>405</y><w>175</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;40;330;40;330;220</additional_attributes></element><element><id>Relation</id><coordinates><x>534</x><y>405</y><w>15</w><h>55</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>534</x><y>500</y><w>145</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;80;270;80</additional_attributes></element><element><id>Relation</id><coordinates><x>419</x><y>500</y><w>110</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;10;200;80;10;80</additional_attributes></element></diagram>
