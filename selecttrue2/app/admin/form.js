@@ -37,6 +37,10 @@ class FormController{
             
             if(this.#validateFields()){
                 const value = this.#getvaluObject();
+                const card = new Card(value.cardtext, value.right)
+                this.#manager.add(card);
+                e.target.reset();//törli az inputokból az értékeket
+
             //elkérjük a fieldek értékeit
             //példányosítunk egy cardot
             //hozzáadjuk a managerhez
@@ -65,7 +69,7 @@ class FormController{
     /**
      * végigmegy a formfieldeken, es idhoz rendeli 
      * az értékeket amik az inputokba vannak
-     * @returns {}
+     * @returns {cardtext: string, right:boolean} a form fieldek értékei
      */
     #getvaluObject(){
         const result = {};
